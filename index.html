@@ -785,6 +785,36 @@
             min-height: 120px;
         }
 
+        .form-status {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 500;
+            display: none;
+        }
+
+        .form-status.success {
+            background: rgba(0, 255, 0, 0.1);
+            color: #00ff00;
+            border: 1px solid rgba(0, 255, 0, 0.3);
+            display: block;
+        }
+
+        .form-status.error {
+            background: rgba(255, 0, 0, 0.1);
+            color: #ff6b6b;
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            display: block;
+        }
+
+        .form-status.loading {
+            background: rgba(0, 212, 255, 0.1);
+            color: #00d4ff;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            display: block;
+        }
+
         /* Footer */
         .footer {
             background: rgba(15, 15, 35, 0.95);
@@ -1119,7 +1149,7 @@
                     </div>
                 </a>
             </div>
-            <form class="contact-form">
+            <form class="contact-form" id="contactForm">
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input type="text" id="name" name="name" required>
@@ -1136,6 +1166,7 @@
                     <i class="fas fa-paper-plane"></i>
                     Send Message
                 </button>
+                <div id="formStatus" class="form-status"></div>
             </form>
         </div>
     </section>
@@ -1272,6 +1303,43 @@
                 modal.style.display = 'none';
             }
         }
+
+        // Simple contact form handling
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const message = document.getElementById('message').value;
+                    
+                    // Create email subject and body
+                    const subject = `Portfolio Contact from ${name}`;
+                    const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+                    
+                    // Open default email client with pre-filled information
+                    const mailtoLink = `mailto:khushiwagdre1@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                    
+                    // Show success message
+                    const formStatus = document.getElementById('formStatus');
+                    formStatus.className = 'form-status success';
+                    formStatus.textContent = 'Opening your email client... Please send the email manually.';
+                    
+                    // Open email client
+                    window.open(mailtoLink, '_blank');
+                    
+                    // Reset form
+                    document.getElementById('contactForm').reset();
+                    
+                    // Hide success message after 5 seconds
+                    setTimeout(() => {
+                        formStatus.style.display = 'none';
+                    }, 5000);
+                });
+            }
+        });
     </script>
 </body>
 </html>
