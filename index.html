@@ -1149,7 +1149,7 @@
                     </div>
                 </a>
             </div>
-            <form class="contact-form" id="contactForm" action="https://formspree.io/f/mjkewvdn" method="POST" target="_blank">
+            <div class="contact-form">
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input type="text" id="name" name="name" required>
@@ -1162,14 +1162,12 @@
                     <label for="message">Message</label>
                     <textarea id="message" name="message" required></textarea>
                 </div>
-                <input type="hidden" name="_next" value="https://your-portfolio-url.com/#contact">
-                <input type="hidden" name="_replyto" value="khushiwagdre1@gmail.com">
-                <button type="submit" class="btn btn-primary">
+                <button type="button" class="btn btn-primary" onclick="sendEmail()">
                     <i class="fas fa-paper-plane"></i>
                     Send Message
                 </button>
                 <div id="formStatus" class="form-status"></div>
-            </form>
+            </div>
         </div>
     </section>
 
@@ -1306,62 +1304,49 @@
             }
         }
 
-        // Contact form handling with Formspree
-        document.addEventListener('DOMContentLoaded', function() {
-            const contactForm = document.getElementById('contactForm');
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    const submitBtn = contactForm.querySelector('button[type="submit"]');
-                    const formStatus = document.getElementById('formStatus');
-                    
-                    // Show loading state
-                    submitBtn.disabled = true;
-                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-                    formStatus.className = 'form-status loading';
-                    formStatus.textContent = 'Sending your message...';
-                    formStatus.style.display = 'block';
-                    
-                    // Get form data
-                    const formData = new FormData(contactForm);
-                    
-                    // Send to Formspree
-                    fetch(contactForm.action, {
-                        method: 'POST',
-                        body: formData,
-                        headers: {
-                            'Accept': 'application/json'
-                        }
-                    })
-                    .then(response => {
-                        if (response.ok) {
-                            // Success
-                            formStatus.className = 'form-status success';
-                            formStatus.textContent = 'Message sent successfully! I\'ll get back to you soon.';
-                            contactForm.reset();
-                        } else {
-                            throw new Error('Failed to send message');
-                        }
-                    })
-                    .catch(error => {
-                        // Error
-                        formStatus.className = 'form-status error';
-                        formStatus.textContent = 'Failed to send message. Please try again or contact me directly via email.';
-                    })
-                    .finally(() => {
-                        // Reset button
-                        submitBtn.disabled = false;
-                        submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
-                        
-                        // Hide status message after 5 seconds
-                        setTimeout(() => {
-                            formStatus.style.display = 'none';
-                        }, 5000);
-                    });
-                });
+        // Simple email function
+        function sendEmail() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            // Validate form
+            if (!name || !email || !message) {
+                showStatus('Please fill in all fields.', 'error');
+                return;
             }
-        });
+            
+            // Create email content
+            const subject = `Portfolio Contact from ${name}`;
+            const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+            
+            // Create mailto link
+            const mailtoLink = `mailto:khushiwagdre1@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            
+            // Show success message
+            showStatus('Opening your email client... Please send the email manually.', 'success');
+            
+            // Open email client
+            window.open(mailtoLink, '_blank');
+            
+            // Reset form
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('message').value = '';
+        }
+        
+        // Show status message
+        function showStatus(message, type) {
+            const formStatus = document.getElementById('formStatus');
+            formStatus.className = `form-status ${type}`;
+            formStatus.textContent = message;
+            formStatus.style.display = 'block';
+            
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                formStatus.style.display = 'none';
+            }, 5000);
+        }
     </script>
 </body>
 </html>
