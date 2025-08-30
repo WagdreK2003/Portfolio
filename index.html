@@ -1149,7 +1149,7 @@
                     </div>
                 </a>
             </div>
-            <form class="contact-form" id="contactForm" action="https://formspree.io/f/mjkewvdn" method="POST">
+            <form class="contact-form" id="contactForm" action="https://formspree.io/f/mjkewvdn" method="POST" target="_blank">
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input type="text" id="name" name="name" required>
@@ -1162,6 +1162,8 @@
                     <label for="message">Message</label>
                     <textarea id="message" name="message" required></textarea>
                 </div>
+                <input type="hidden" name="_next" value="https://your-portfolio-url.com/#contact">
+                <input type="hidden" name="_replyto" value="khushiwagdre1@gmail.com">
                 <button type="submit" class="btn btn-primary">
                     <i class="fas fa-paper-plane"></i>
                     Send Message
