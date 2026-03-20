@@ -41,27 +41,15 @@
 
         /* Add animated gradient background */
         @keyframes gradientShift {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         @keyframes particleFloat {
-            0%, 100% {
-                transform: translateY(0px) rotate(0deg);
-            }
-            33% {
-                transform: translateY(-20px) rotate(120deg);
-            }
-            66% {
-                transform: translateY(20px) rotate(240deg);
-            }
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(120deg); }
+            66% { transform: translateY(20px) rotate(240deg); }
         }
 
         /* Header */
@@ -350,7 +338,7 @@
 
         /* Sections */
         .section {
-            padding: 5rem 2rem;
+            padding: 80px 20px;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -375,72 +363,63 @@
             }
         }
 
-        /* Skills */
-        .skills-grid {
+        /* --- Updated Skills Styles --- */
+        .skills-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
             gap: 2rem;
+            margin-top: 2rem;
         }
 
-        .skill-category {
+        .skill-card {
             background: rgba(26, 26, 46, 0.8);
-            padding: 2rem;
-            border-radius: 15px;
             border: 1px solid rgba(0, 212, 255, 0.2);
-            transition: all 0.3s ease;
-            animation: skillCardFloat 0.6s ease-out;
-            opacity: 0;
-            animation-fill-mode: forwards;
-        }
-
-        .skill-category:nth-child(1) { animation-delay: 0.1s; }
-        .skill-category:nth-child(2) { animation-delay: 0.2s; }
-        .skill-category:nth-child(3) { animation-delay: 0.3s; }
-        .skill-category:nth-child(4) { animation-delay: 0.4s; }
-        .skill-category:nth-child(5) { animation-delay: 0.5s; }
-        .skill-category:nth-child(6) { animation-delay: 0.6s; }
-
-        .skill-category:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.3);
-            border-color: rgba(0, 212, 255, 0.5);
-        }
-
-        @keyframes skillCardFloat {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .skill-category h3 {
-            color: #00d4ff;
-            margin-bottom: 1rem;
-        }
-
-        .skill-tags {
+            border-radius: 15px;
+            padding: 2rem 1rem;
+            text-align: center;
+            cursor: pointer;
             display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .skill-tag {
-            background: linear-gradient(45deg, #00d4ff, #0099cc);
+        .skill-card img {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 15px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+
+        .skill-card p {
+            font-size: 0.95rem;
+            font-weight: 500;
             color: #ffffff;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px) scale(1.05) !important;
+            box-shadow: 0 15px 30px rgba(0, 212, 255, 0.3);
+            border-color: rgba(0, 212, 255, 0.6);
+            background: rgba(30, 30, 60, 0.9);
+        }
+
+        .skill-card:hover img {
+            transform: rotate(5deg) scale(1.1);
         }
 
         /* Projects */
-        .projects-grid {
+        .projects-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 30px;
+            padding: 20px;
         }
 
         .project-card {
@@ -488,8 +467,8 @@
             transition: transform 0.4s ease;
         }
 
-        .project-content {
-            padding: 1.5rem;
+        .project-info {
+            padding: 25px;
         }
 
         .project-title {
@@ -502,6 +481,24 @@
             color: #cccccc;
             margin-bottom: 1.5rem;
         }
+
+        .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.project-tags span {
+    background: rgba(0, 212, 255, 0.1);
+    color: #00d4ff;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    font-weight: 500;
+}
+
 
         .project-links {
             display: flex;
@@ -815,7 +812,7 @@
             border: 1px solid rgba(0, 212, 255, 0.3);
             display: block;
         }
-
+        
         /* Footer */
         .footer {
             background: rgba(15, 15, 35, 0.95);
@@ -863,7 +860,6 @@
                 transform: translateY(-5px);
             }
         }
-
         /* Additional animations */
         .skill-tag {
             animation: tagPulse 2s ease-in-out infinite;
@@ -912,10 +908,11 @@
                 align-items: center;
             }
         }
+
     </style>
 </head>
 <body>
-    <!-- Header -->
+
     <header class="header">
         <nav class="nav">
             <div class="logo" onclick="scrollToTop()">Khushi Wagdre</div>
@@ -929,102 +926,94 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
     <section id="home" class="hero">
         <div>
             <div class="profile-pic">
                 <img src="assets/khushi wagdre.png" alt="Khushi Wagdre">
             </div>
             <h1 class="hero-title">Hi, I'm Khushi Wagdre</h1>
-            <p class="hero-subtitle">MCA Student & Future IT Innovator</p>
+            <p class="hero-subtitle">MCA Student & Full Stack Developer</p>
             <p class="hero-description">
                 Passionate about creating innovative solutions and learning new technologies. 
                 I bring strong problem-solving skills, adaptability, and teamwork to every project.
             </p>
-            <div class="cta-buttons">
+             <div class="cta-buttons">
                 <a href="#contact" class="btn btn-primary">
                     <i class="fas fa-envelope"></i>
                     Get In Touch
                 </a>
-                <!-- <a href="assets\Khushi Wagdre Resume.pdf" class="btn btn-secondary">
-                    <i class="fas fa-download"></i>
-                    Download Resume
-                </a> -->
-            </div>
+              </div>
         </div>
     </section>
 
-    <!-- Skills Section -->
+    <!-- Updated Technical Skills Section -->
     <section id="skills" class="section">
         <h2 class="section-title">Technical Skills</h2>
-        <div class="skills-grid">
-            <div class="skill-category">
-                <h3><i class="fas fa-code"></i> Programming Languages</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">Python</span>
-                    <!-- <span class="skill-tag">Java</span> -->
-                    <!-- <span class="skill-tag">C++</span> -->
-                </div>
+        <div class="skills-container">
+            <div class="skill-card">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS">
+                <p>JavaScript</p>
             </div>
-            <div class="skill-category">
-                <h3><i class="fas fa-globe"></i> Web Technologies</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">HTML</span>
-                    <span class="skill-tag">CSS</span>
-                    <span class="skill-tag">JavaScript</span>
-                    <!-- <span class="skill-tag">TypeScript</span> -->
-                </div>
+            <div class="skill-card">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React">
+                <p>React</p>
             </div>
-            <div class="skill-category">
-                <h3><i class="fas fa-layer-group"></i> Frameworks</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">Flask</span>
-                    <span class="skill-tag">Node.js</span>
-                    <!-- <span class="skill-tag">Express.js</span> -->
-                </div>
+            <div class="skill-card">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js">
+                <p>Node.js</p>
             </div>
-            <div class="skill-category">
-                <h3><i class="fas fa-database"></i> Databases</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">MySQL</span>
-                    <!-- <span class="skill-tag">MongoDB</span> -->
-                </div>
+            <div class="skill-card">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" alt="Express.js">
+                <p>Express.js</p>
             </div>
-            <div class="skill-category">
-                <h3><i class="fas fa-tools"></i> Tools</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">VS Code</span>
-                    <span class="skill-tag">Microsoft Excel</span>
-                </div>
+            <div class="skill-card">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB">
+                <p>MongoDB</p>
             </div>
-            <div class="skill-category">
-                <h3><i class="fas fa-code-branch"></i> Version Control</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">Git</span>
-                    <span class="skill-tag">GitHub</span>
-                </div>
+            <div class="skill-card">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+                <p>Python</p>
             </div>
-            <div class="skill-category">
-                <h3><i class="fas fa-visualization"></i> Data Visualization</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">Tableau</span>
-                    <span class="skill-tag">PowerBI</span>
-                </div>
+            <div class="skill-card">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL">
+                <p>MySQL</p>
+            </div>
+            <div class="skill-card">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML">
+                <p>HTML</p>
+            </div>
+            <div class="skill-card">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS">
+                <p>CSS</p>
+            </div>
+            <div class="skill-card">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git">
+                <p>Git</p>
+            </div>
+            <div class="skill-card">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" style="filter: invert(1);">
+                <p>GitHub</p>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
+     <!-- Projects Section -->
     <section id="projects" class="section">
         <h2 class="section-title">Projects</h2>
-        <div class="projects-grid">
+        <div class="projects-container">
             <div class="project-card">
                 <img src="assets/amwell.PNG" alt="AmWell Project" class="project-image">
-                <div class="project-content">
+                <div class="project-info">
                     <h3 class="project-title">AmWell - Virtual Healthcare Assistant</h3>
                     <p class="project-description">
                         Healthcare app using AI and GPS for online doctor visits and medicine delivery in rural areas.
                     </p>
+                    <div class="project-tags">
+                        <span>React</span>
+                        <span>Express.js</span>
+                        <span>MongoDB</span>
+                        <span>AI/ML</span>
+                    </div>
                     <div class="project-links">
                         <a href="https://github.com/WagdreK2003/AmWell.git" target="_blank" class="project-link">GitHub</a>
                         <a href="https://amwell.onrender.com/" class="project-link">Live Demo</a>
@@ -1033,11 +1022,17 @@
             </div>
             <div class="project-card">
                 <img src="assets\BrewHub.PNG" alt="BrewHub - Cafe Management System" class="project-image">
-                <div class="project-content">
+                <div class="project-info">
                     <h3 class="project-title">BrewHub - Cafe Management System</h3>
                     <p class="project-description">
                         A cafe management system that allows users to manage their orders, inventory, and customer information.
                     </p>
+                    <div class="project-tags">
+                        <span>MongoDB</span>
+                        <span>Express.js</span>
+                        <span>React</span>
+                        <span>Node.js</span>
+                    </div>
                     <div class="project-links">
                         <a href="https://github.com/WagdreK2003/brewhub.git" class="project-link">GitHub</a>
                     </div>
@@ -1045,17 +1040,23 @@
             </div>
             <div class="project-card">
                 <img src="assets\Melody.PNG" alt="Melody-Virtual Assistant" class="project-image">
-                <div class="project-content">
+                <div class="project-info">
                     <h3 class="project-title">Melody-Virtual Assistant</h3>
                     <p class="project-description">
                         A virtual assistant that can help users with their daily tasks and provide information.
                     </p>
+                    <div class="project-tags">
+                        <span>React</span>
+                        <span>Node.js</span>
+                        <span>MongoDB</span>
+                        <span>AI/ML</span>
+                    </div>
                     <div class="project-links">
                         <a href="https://github.com/WagdreK2003/MelodyAssistant.git" class="project-link">GitHub</a>
                     </div>
                 </div>
             </div>
-            <div class="project-card">
+            <!-- <div class="project-card">
                 <img src="assets\EAD.PNG" alt="Employee Attrition Analysis" class="project-image">
                 <div class="project-content">
                     <h3 class="project-title">Employee Attrition Analysis</h3>
@@ -1078,22 +1079,10 @@
                         <a href="https://github.com/WagdreK2003/Sales_Performance_Analysis.git" class="project-link">GitHub</a>
                     </div>
                 </div>
-            </div>
-            <!-- <div class="project-card">
-                <img src="assets/number.PNG" alt="Number Game" class="project-image">
-                <div class="project-content">
-                    <h3 class="project-title">Guess the Number Game</h3>
-                    <p class="project-description">
-                        Interactive number guessing game with Python backend and web-based frontend.
-                    </p>
-                    <div class="project-links">
-                        <a href="https://github.com/WagdreK2003/guess_the-_number.git" class="project-link">GitHub</a>
-                    </div>
-                </div>
             </div> -->
         </div>
     </section>
-
+  
     <!-- Achievements Section -->
     <section id="achievements" class="section">
         <h2 class="section-title">Achievements & Certificates</h2>
@@ -1209,125 +1198,137 @@
     </div>
 
     <script>
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
+    // 1. Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
         });
+    });
 
-        // Scroll to top function
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
+    // 2. Scroll to top function
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
 
-        // Profile image fallback
-        const imgEl = document.getElementById('profileImage');
+    // 3. Profile image fallback
+    const imgEl = document.getElementById('profileImage');
+    if (imgEl) {
         imgEl.addEventListener('error', function() {
             this.src = 'https://placehold.co/400x400/00d4ff/ffffff?text=Khushi';
         });
+    }
 
-        // Achievement modal
-        const achievementData = {
-            internship: {
-                title: "Python Full Stack Developer Intern",
-                description: `Successfully completed a 3-month internship as a Python Full Stack Developer.
-                            <br><a href="assets/eduskill.pdf" target="_blank" 
-                            style="color:#00d4ff; text-decoration:underline;">View Certificate</a>`,
-                image: "https://placehold.co/400x300/00d4ff/ffffff?text=Internship+Certificate"
-            },
-            'data-analytics': {
-                title: "Data Analytics Job Simulation",
-                description: `Completed Deloitte Data Analytics Job Simulation with Forage.
-                            <br><a href="assets/data analitics.pdf" target="_blank" 
-                            style="color:#00d4ff; text-decoration:underline;">View Certificate</a>`,
-                image: "https://placehold.co/400x300/0099cc/ffffff?text=Deloitte+Certificate"
-            },
-            hackerrank: {
-                title: "5-Star Gold Badge in Python",
-                description: `Achieved the highest ranking in Python programming on HackerRank.
-                            <br><a href="assets/hacker rank batch.jpg" target="_blank" 
-                            style="color:#00d4ff; text-decoration:underline;">View Certificate</a>`,
-                image: "https://placehold.co/400x300/00d4ff/ffffff?text=HackerRank+Badge"
-            },
-            personality: {
-                title: "Certified in Personality and Soft Skills",
-                description: `Completed certification in personality development and soft skills training.
-                            <br><a href="assets/NPTEL.pdf" target="_blank" 
-                            style="color:#00d4ff; text-decoration:underline;">View Certificate</a>`,
-                image: "https://placehold.co/400x300/0099cc/ffffff?text=Personality+Certificate"
-            },
-            'project-winner': {
-                title: "Department-Level Project Winner",
-                description: `Won the department-level project competition with AmWell.
-                            <br><a href="assets/Amwell certificate.png" target="_blank" 
-                            style="color:#00d4ff; text-decoration:underline;">View Certificate</a>`,
-                image: "https://placehold.co/400x300/00d4ff/ffffff?text=Winner+Certificate"
+    // 4. Achievement modal data
+    const achievementData = {
+        internship: {
+            title: "Python Full Stack Developer Intern",
+            description: `Successfully completed a 3-month internship as a Python Full Stack Developer.
+                        <br><a href="assets/eduskill.pdf" target="_blank" 
+                        style="color:#00d4ff; text-decoration:underline;">View Certificate</a>`,
+            image: "https://placehold.co/400x300/00d4ff/ffffff?text=Internship+Certificate"
+        },
+        'data-analytics': {
+            title: "Data Analytics Job Simulation",
+            description: `Completed Deloitte Data Analytics Job Simulation with Forage.
+                        <br><a href="assets/data analitics.pdf" target="_blank" 
+                        style="color:#00d4ff; text-decoration:underline;">View Certificate</a>`,
+            image: "https://placehold.co/400x300/0099cc/ffffff?text=Deloitte+Certificate"
+        },
+        hackerrank: {
+            title: "5-Star Gold Badge in Python",
+            description: `Achieved the highest ranking in Python programming on HackerRank.
+                        <br><a href="assets/hacker rank batch.jpg" target="_blank" 
+                        style="color:#00d4ff; text-decoration:underline;">View Certificate</a>`,
+            image: "https://placehold.co/400x300/00d4ff/ffffff?text=HackerRank+Badge"
+        },
+        personality: {
+            title: "Certified in Personality and Soft Skills",
+            description: `Completed certification in personality development and soft skills training.
+                        <br><a href="assets/NPTEL.pdf" target="_blank" 
+                        style="color:#00d4ff; text-decoration:underline;">View Certificate</a>`,
+            image: "https://placehold.co/400x300/0099cc/ffffff?text=Personality+Certificate"
+        },
+        'project-winner': {
+            title: "Department-Level Project Winner",
+            description: `Won the department-level project competition with AmWell.
+                        <br><a href="assets/Amwell certificate.png" target="_blank" 
+                        style="color:#00d4ff; text-decoration:underline;">View Certificate</a>`,
+            image: "https://placehold.co/400x300/00d4ff/ffffff?text=Winner+Certificate"
+        }
+    };
+
+    // 5. Shared Intersection Observer for all animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const scrollObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
             }
-        };
+        });
+    }, observerOptions);
 
-        // Scroll-triggered animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observe all animated elements
-        document.addEventListener('DOMContentLoaded', () => {
-            const animatedElements = document.querySelectorAll('.skill-category, .project-card, .achievement-card, .contact-item');
-            animatedElements.forEach(el => {
-                el.style.opacity = '0';
-                el.style.transform = 'translateY(30px)';
-                el.style.transition = 'all 0.6s ease-out';
-                observer.observe(el);
-            });
+    // 6. Initialize animations when DOM is loaded
+    document.addEventListener('DOMContentLoaded', () => {
+        // Observe standard sections (Projects, Achievements, etc.)
+        const standardAnimated = document.querySelectorAll('.skill-category, .project-card, .achievement-card, .contact-item');
+        standardAnimated.forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease-out';
+            scrollObserver.observe(el);
         });
 
-        function openModal(achievementId) {
-            const modal = document.getElementById('achievementModal');
-            const data = achievementData[achievementId];
-            
+        // Observe NEW Skill Cards with stagger effect (जो मी नवीन दिला होता तो)
+        document.querySelectorAll('.skill-card').forEach((card, i) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.5s ease-out';
+            card.style.transitionDelay = `${i * 0.1}s`; // Stagger effect
+            scrollObserver.observe(card);
+        });
+    });
+
+    // 7. Modal functions
+    function openModal(achievementId) {
+        const modal = document.getElementById('achievementModal');
+        const data = achievementData[achievementId];
+        
+        if (data && modal) {
             document.getElementById('modalTitle').textContent = data.title;
-            document.getElementById('modalDescription').textContent = data.description;
+            // Using innerHTML so the link in description works
+            document.getElementById('modalDescription').innerHTML = data.description;
             document.getElementById('modalImage').src = data.image;
-            
             modal.style.display = 'block';
         }
+    }
 
-        function closeModal() {
-            document.getElementById('achievementModal').style.display = 'none';
+    function closeModal() {
+        const modal = document.getElementById('achievementModal');
+        if (modal) modal.style.display = 'none';
+    }
+
+    // Close modal when clicking outside
+    window.onclick = function(event) {
+        const modal = document.getElementById('achievementModal');
+        if (event.target === modal) {
+            modal.style.display = 'none';
         }
-
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            const modal = document.getElementById('achievementModal');
-            if (event.target === modal) {
-                modal.style.display = 'none';
-            }
-        }
-
-
-        
-
-    </script>
+    }
+</script>
 </body>
 </html>

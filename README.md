@@ -1,1 +1,0 @@
-https://khushiwagdre.netlify.app/
